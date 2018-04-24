@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 
 const productRouters = require('./api/routes/products');
 const orderRouters = require('./api/routes/orders');
+const userRouters = require('./api/routes/user');
 
 mongoose.connect('mongodb://admin:'+ process.env.MONGO_ATLAS_PW +'@node-rest-shop-shard-00-00-o73hk.mongodb.net:27017,node-rest-shop-shard-00-01-o73hk.mongodb.net:27017,node-rest-shop-shard-00-02-o73hk.mongodb.net:27017/test?ssl=true&replicaSet=node-rest-shop-shard-0&authSource=admin');
 
@@ -26,6 +27,7 @@ app.use((req, res, next) => {
 
 app.use('/products', productRouters);
 app.use('/orders', orderRouters);
+app.use('/user', userRouters);
 
 app.use((req, res, next) => {
   const error = new Error('Not found');
